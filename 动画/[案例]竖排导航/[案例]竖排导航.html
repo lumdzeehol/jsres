@@ -1,0 +1,109 @@
+ <!DOCTYPE html >
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>竖排导航</title>
+		<style>
+			li {
+				margin-bottom: 2px;
+				list-style: none;
+				background: url(bg.gif) repeat-x 0 1px;
+				float: left;
+				clear: left;
+				cursor: pointer;
+			}
+			a {
+				display: block;
+				width: 120px;
+				height: 25px;
+				line-height: 25px;
+				position: relative;
+				padding: 0 6px;
+				border: 1px solid #d6d6d6;
+				text-decoration: none;
+				font-size: 12px;
+				color: #555;
+			}
+			a:hover {
+				font-weight: bold;
+				border: 1px solid #b5b5b5;
+			}
+			span {
+				display: block;
+				width: 9px;
+				height: 8px;
+				overflow: hidden;
+				background: url(ico.gif) no-repeat;
+				position: absolute;
+				top: 8px;
+				right: 10px;
+			}
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded',function () {
+				var lis = document.querySelectorAll('li');
+				var timer = new Array(lis.length);
+				for(var i = 0; i < lis.length ; i++ ){
+				    lis[i].children[0].idx = i;
+                         
+				    lis[i].children[0].onmouseenter = function () {
+				        console.log(this);
+				        if (timer[this.idx]){
+				            clearInterval(timer[this.idx]);
+						}
+						timer[this.idx] = setInterval(()=>{
+							var ablock = this.getElementsByTagName('a')[0];
+						    var width = this.offsetWidth;
+                            // console.log(this);
+                                 
+						    width += 4;
+						    if (width > 200){
+						        width = 200;
+						        clearInterval(timer[this.idx]);
+						        // return false;
+							}
+							this.style.width = width + 'px';
+                        },20);
+                    };
+                    lis[i].children[0].onmouseleave = function () {
+                    	if (timer[this.idx]) {
+                    		clearInterval(timer[this.idx]);
+                    	}    
+                             
+                    	timer[this.idx] = setInterval(()=>{
+                            console.log('run interval');
+                                 
+                    		var ablock = this.getElementsByTagName('a')[0];
+                    		var width = this.offsetWidth;
+                    		width -= 4;
+                    		console.log(this);
+                    		if (width < 130) {
+                    			width = 130;
+                    			clearInterval(timer[this.idx]);
+                    			return false;
+                    		}
+                    		     
+                    		this.style.width = width + 'px';
+
+                    		     
+                    	}, 20);
+                    }
+				}
+
+            });
+		</script>
+	</head>
+
+	<body>
+		<ul id="menu">
+			<li><a href="http://www.mobiletrain.org" target="_blank">首页<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">千锋精品课程<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">CSS相关知识<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">关于我们<span></span></a></li>
+			<li><a href="http://www.mobiletrain.org" target="_blank">联系我们<span></span></a></li>
+		</ul>
+
+	</body>
+
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<meta charset='utf-8'/>
+		<style type="text/css">
+		body, ul, li, ol {
+			list-style: none;
+			padding: 10px;
+			margin: 20px;
+			font-size: 12px;
+			font-family: 微软雅黑;
+		}
+		img {
+			border: 0px;
+		}
+		.picList {
+			width: 100%;
+			float: left;
+		}
+		.picList .col {
+			width: 300px;
+			height: 200px;
+			position: relative;
+			overflow: hidden;
+			float: left;
+			margin: 10px 0 0 10px;
+		}
+		.picList .col img, .col a {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+		}
+		.picList .col img {
+			width: 100%;
+		}
+		.picList .col a {
+			display: block;
+			width: 280px;
+			height: 180px;
+			top: 160px;
+			background:#000;
+			color: white;
+			font-style: normal;
+			line-height: 25px;
+			padding: 10px;
+			opacity: 0.8;
+			text-decoration: none;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded',function(){
+			var col1 = document.getElementById('pic1');
+            var col2 = document.getElementById('pic2');
+            var col3 = document.getElementById('pic3');
+			var timer1,timer2,timer3;
+                col1.onmouseenter = function(ev) {
+                    ev = ev||window.event;
+                    ev.stopPropagation();
+                    var ablock = this.querySelector('a');
+                    clearInterval(timer1);
+                    console.log(timer1);
+                    timer1 = setInterval(function () {
+                        var top = ablock.offsetTop;
+                        top-=4;
+                        if (top <= 10) {
+                            console.log(222);
+                            clearInterval(timer1);
+                            return false;
+                        }
+                        ablock.style.top = top + 'px';
+                    }, 20);
+                }
+                col1.onmouseleave = function (ev) {
+					ev = ev||window.event;
+                    var ablock = this.querySelector('a');
+					clearInterval(timer1);
+					timer1 = setInterval(function () {
+						var top = ablock.offsetTop;
+						top+=4;
+						if(top >= 160){
+						    clearInterval(timer1);
+						    return false;
+						}
+						ablock.style.top = top + 'px';
+                    },20);
+                }
+            col2.onmouseenter = function(ev) {
+
+                ev = ev||window.event;
+                ev.stopPropagation();
+                var ablock = this.querySelector('a');
+                clearInterval(timer2);
+                console.log(timer2);
+                timer2 = setInterval(function () {
+                    var top = ablock.offsetTop;
+                    top-=4;
+                    if (top <= 10) {
+                        console.log(222);
+                        clearInterval(timer2);
+                        return false;
+                    }
+                    ablock.style.top = top + 'px';
+                }, 20);
+            }
+            col2.onmouseleave = function (ev) {
+                ev = ev||window.event;
+                var ablock = this.querySelector('a');
+                clearInterval(timer2);
+                timer2 = setInterval(function () {
+                    var top = ablock.offsetTop;
+                    top+=4;
+                    if(top >= 160){
+                        clearInterval(timer2);
+                        return false;
+                    }
+                    ablock.style.top = top + 'px';
+                },20);
+            }
+            col3.onmouseenter = function(ev) {
+
+                ev = ev||window.event;
+                ev.stopPropagation();
+                var ablock = this.querySelector('a');
+                clearInterval(timer3);
+                console.log(timer3);
+                timer3 = setInterval(function () {
+                    var top = ablock.offsetTop;
+                    top-=4;
+                    if (top <= 10) {
+                        console.log(222);
+                        clearInterval(timer3);
+                        return false;
+                    }
+                    ablock.style.top = top + 'px';
+                }, 20);
+            }
+            col3.onmouseleave = function (ev) {
+                ev = ev||window.event;
+                var ablock = this.querySelector('a');
+                clearInterval(timer3);
+                timer3 = setInterval(function () {
+                    var top = ablock.offsetTop;
+                    top+=4;
+                    if(top >= 160){
+                        clearInterval(timer3);
+                        return false;
+                    }
+                    ablock.style.top = top + 'px';
+                },20);
+            }
+
+		});
+	</script>
+</head>
+<body>
+<div class='picList' id="picList">
+	<div class='col' id="pic1" > 
+	   <img src="images/b1.jpg" />
+	   <a href='#'>学会html5 <br/>
+	 本课程由浅入深，逐步推进，以示例为主线，详细完整地介绍HTML5的新功能与新特征
+	   </a> 
+	</div>
+	<div class='col' id="pic2"> 
+	   <img src="images/b2.jpg" />
+	   <a href='#'>圆角水晶按钮制作<br/>
+	网页中的圆角按钮和宽度自适应按钮就这么轻松制作！
+	   </a> 
+	</div>
+	<div class='col' id="pic3"> 
+	   <img src="images/b3.jpg" />
+	   <a href='#'>导航条菜单的制作<br/>
+	30分钟教你轻松制作出各种形式的网站导航条菜单
+	   </a> 
+	</div>
+</div>
+</body>
+</html>
+
